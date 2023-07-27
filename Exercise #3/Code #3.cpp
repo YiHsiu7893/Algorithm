@@ -1,4 +1,4 @@
-// Ex3 - Dynamic Programming
+// Ex3 - Dynamic Programming.cpp
 #include <iostream>
 #include <cstdlib>
 using namespace std;
