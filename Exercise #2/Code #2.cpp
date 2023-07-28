@@ -3,22 +3,22 @@
 #include <cstdlib>
 using namespace std;
 
-class TreeNode         // define TreeNode class
+class TreeNode         				   // define TreeNode class
 {
   private:
   	int key;
-  	bool color;        // black=0 ; red=1
+  	bool color;        			   // black=0 ; red=1
   	TreeNode *parent,*lchild,*rchild;
   	
   public:
-  	TreeNode(int k):key(k)   // constructor
+  	TreeNode(int k):key(k)   		   // constructor
 	{
 	  color=1;
 	  parent=NULL;
 	  lchild=NULL;
 	  rchild=NULL;
 	}
-	void printColor()        // function for showing the color of the nodes
+	void printColor()        		   // function for showing the color of the nodes
 	{
 	  if(this->color)
 	    cout << "red";
@@ -32,13 +32,13 @@ class TreeNode         // define TreeNode class
   friend void DeleteTree(TreeNode*);
 };
 
-class RBTree           // define RBTree class
+class RBTree           				   // define RBTree class
 {
   private:
   	TreeNode *root;
   	
   public:
-  	RBTree(){root=NULL;}     // constructor
+  	RBTree(){root=NULL;}     		   // constructor
   	
 	void Transplant(TreeNode* u,TreeNode* v)   // Transplant function
 	{
@@ -60,7 +60,7 @@ class RBTree           // define RBTree class
   	  x->parent=y;
 	}
 
-	void RightRotate(TreeNode* x)              // RightRotate function
+	void RightRotate(TreeNode* x)             // RightRotate function
 	{
   	  TreeNode *y=x->lchild;
   	  x->lchild=y->rchild;
@@ -72,7 +72,7 @@ class RBTree           // define RBTree class
  	  x->parent=y;
 	}
 	
-	TreeNode* Search(int k)                    // search the TreeNode whose key==k
+	TreeNode* Search(int k)                  // search the TreeNode whose key==k
 	{
   	  TreeNode* current=root;
   	  while(current)
@@ -92,7 +92,7 @@ class RBTree           // define RBTree class
   friend void DeleteTree(RBTree*);
 };
 
-void RBTree::Insert(TreeNode* z)               // Insert Function
+void RBTree::Insert(TreeNode* z)                 // Insert Function
 {
   TreeNode *x=root,*y=NULL;
   while(x)
@@ -109,7 +109,7 @@ void RBTree::Insert(TreeNode* z)               // Insert Function
   InsertFixup(z);
 }
 
-void RBTree::InsertFixup(TreeNode *z)          // InsertFixup function
+void RBTree::InsertFixup(TreeNode *z)            // InsertFixup function
 {
   while(z!=root && z->parent!=root && z->parent->color)
   {
@@ -167,7 +167,7 @@ void RBTree::InsertFixup(TreeNode *z)          // InsertFixup function
   root->color=0;
 }
 
-void RBTree::Delete(TreeNode* z)               // Delete function
+void RBTree::Delete(TreeNode* z)                 // Delete function
 {
   if(!z)
   {
@@ -211,7 +211,7 @@ void RBTree::Delete(TreeNode* z)               // Delete function
   delete z;
 }
 
-void RBTree::DeleteFixup(TreeNode* x)          // DeleteFixup function
+void RBTree::DeleteFixup(TreeNode* x)            // DeleteFixup function
 {
   while(x!=root && !x->color)
   {
@@ -285,15 +285,15 @@ void RBTree::DeleteFixup(TreeNode* x)          // DeleteFixup function
   x->color=0;
 }
 
-TreeNode* Min(TreeNode* n)                     // look for the minimal key rooted at n
+TreeNode* Min(TreeNode* n)                     	   // look for the minimal key rooted at n
 {
   while(n->lchild) n=n->lchild;
   return n;
 }
 
-void Inorder(RBTree* t) {Inorder(t->root);}    // Inorder driver
+void Inorder(RBTree* t) {Inorder(t->root);}    	   // Inorder driver
 
-void Inorder(TreeNode* current)                // Inorder workhorse
+void Inorder(TreeNode* current)                    // Inorder workhorse
 {
   if(current)
   { 
